@@ -26,6 +26,37 @@
 
   --container: 1140px;
 }
+/* SADECE HİZMETLER: Desktop/Tablet 2 kolon */
+#hizmetler .cards{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+#hizmetler .card{
+  padding: 28px 18px;   /* üst-alt daha fazla */
+  min-height: 420px;    /* opsiyonel: gözle görülür uzatır */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Görsel alanını biraz büyüt (opsiyonel ama etkili) */
+#hizmetler .cardMedia{
+  height: 300px;
+}
+/* 980px altına düşünce global .cards 1fr oluyor.
+   Hizmetler için 2 kolonu koruyoruz (tablet için). */
+@media (max-width: 980px){
+  #hizmetler .cards{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobilde (telefon) alt alta gelsin */
+@media (max-width: 560px){
+  #hizmetler .cards{
+    grid-template-columns: 1fr;
+  }
+}
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -335,7 +366,6 @@ textarea{resize:vertical}
   box-shadow: var(--shadow);
 }
 .cardMedia{
-  height: 170px;
   border-radius: 18px;
   border: 1px solid rgba(15,23,42,.10);
   background:
@@ -680,4 +710,22 @@ textarea{resize:vertical}
 
 .footerBottom__social a:hover svg{
   fill:#fff;
+}
+@media (max-width: 560px){
+  .brand__logo{
+    width: 180px;
+    height: 56px;
+  }
+  .navToggle{
+    position: relative;
+    z-index: 60;
+  }
+}
+@media (max-width: 560px){
+  .navToggle{
+    position: relative;
+    z-index: 1000;
+    pointer-events: auto;
+  }
+  .header{ z-index: 999; }
 }
